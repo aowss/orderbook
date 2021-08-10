@@ -16,4 +16,4 @@
 
 package exchange.core2.orderbook.api;
 
-public record TradeEvent(long makerOrderId, long makerUid, long tradePrice, long reservedBidPrice, long tradeSize, boolean makerOrderCompleted) {}
+public record TradeEvent(long makerOrderId, long makerUid, long tradePrice, long reservedBidPrice, long tradeSize, boolean makerOrderCompleted) implements Event {}

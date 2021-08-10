@@ -945,10 +945,10 @@ public abstract class OrderBookBaseTest<S extends ISymbolSpecification> {
         final List<TradeEvent> trades = response.getTrades();
 
         reduceEventOpt.ifPresent(reduceEvent -> {
-            assertThat(reduceEvent.getPrice(), is(price));
-            assertThat(reduceEvent.getReservedBidPrice(), is(action == BID ? reservedBidPrice : 0L));
-            assertTrue(reduceEvent.getReducedSize() > 0);
-            totalVolumeInEvents.addAndGet(reduceEvent.getReducedSize());
+            assertThat(reduceEvent.price(), is(price));
+            assertThat(reduceEvent.reservedBidPrice(), is(action == BID ? reservedBidPrice : 0L));
+            assertTrue(reduceEvent.reducedSize() > 0);
+            totalVolumeInEvents.addAndGet(reduceEvent.reducedSize());
         });
 
         trades.forEach(trade -> {
@@ -1104,9 +1104,9 @@ public abstract class OrderBookBaseTest<S extends ISymbolSpecification> {
         assertTrue(res.getReduceEventOpt().isPresent());
         final ReduceEvent reduceEvent = res.getReduceEventOpt().get();
 
-        assertThat(reduceEvent.getPrice(), is(price));
-        assertThat(reduceEvent.getReservedBidPrice(), is(reservedBidPrice));
-        assertThat(reduceEvent.getReducedSize(), is(reducedSize));
+        assertThat(reduceEvent.price(), is(price));
+        assertThat(reduceEvent.reservedBidPrice(), is(reservedBidPrice));
+        assertThat(reduceEvent.reducedSize(), is(reducedSize));
     }
 
     private void verifyTradeEvents(final CommandResponse res,
