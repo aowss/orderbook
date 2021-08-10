@@ -952,12 +952,12 @@ public abstract class OrderBookBaseTest<S extends ISymbolSpecification> {
         });
 
         trades.forEach(trade -> {
-            assertThat(trade.getMakerOrderId(), IsNot.not(0L));
-            assertThat(trade.getMakerUid(), IsNot.not(0L));
-            assertTrue(trade.getReservedBidPrice() > 0);
-            assertTrue(trade.getTradePrice() > 0);
-            assertTrue(trade.getTradeSize() > 0);
-            totalVolumeInEvents.addAndGet(trade.getTradeSize());
+            assertThat(trade.makerOrderId(), IsNot.not(0L));
+            assertThat(trade.makerUid(), IsNot.not(0L));
+            assertTrue(trade.reservedBidPrice() > 0);
+            assertTrue(trade.tradePrice() > 0);
+            assertTrue(trade.tradeSize() > 0);
+            totalVolumeInEvents.addAndGet(trade.tradeSize());
         });
 
         if (response.isSuccessful()) {
